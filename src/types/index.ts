@@ -1,46 +1,24 @@
-export interface User {
-  id: string;
-  display_name: string;
-  email: string;
-  role: string;
-  email_verified: boolean;
-  avatar_url?: string;
-  created_at: string;
-  updated_at: string;
-}
-
 export interface Painting {
   id: string;
   title: string;
+  year: number;
   description: string;
   image_url: string;
-  category_id?: string;
   featured: boolean;
-  price?: number;
-  dimensions?: string;
-  technique?: string;
-  year?: number;
   view_count: number;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface CategoryType {
-  id: string;
-  name: string;
-  created_at: string;
-  updated_at: string;
+  categories: Category[];
 }
 
 export interface Category {
   id: string;
   name: string;
   slug: string;
-  type_id?: string;
-  type?: CategoryType;
-  description?: string;
-  created_at: string;
-  updated_at: string;
+  type: CategoryType;
+}
+
+export interface CategoryType {
+  id: string;
+  name: string; // e.g., 'artistic_style', 'thematic_genre', 'physical_format'
 }
 
 export interface BlogPost {
@@ -52,24 +30,17 @@ export interface BlogPost {
   document_urls?: string[];
   published: boolean;
   created_at: string;
-  updated_at: string;
 }
 
 export interface SiteContent {
-  id?: string;
-  hero_title?: string;
-  hero_subtitle?: string;
-  about_text?: string;
-  legal_notice?: string;
-  privacy_policy?: string;
-  cookie_policy?: string;
+  hero_title: string;
+  hero_subtitle: string;
   blog_visible: boolean;
   restoration_visible: boolean;
   newsletter_visible: boolean;
   social_facebook?: string;
   social_instagram?: string;
   social_twitter?: string;
-  updated_at?: string;
 }
 
 export interface ContactMessage {
@@ -86,18 +57,20 @@ export interface RestorationRequest {
   email: string;
   phone?: string;
   message: string;
-  status: string;
-  notes?: string;
   created_at: string;
-  updated_at: string;
 }
 
 export interface RestorationShowcase {
   id: string;
   title: string;
   description: string;
-  before_image?: string;
-  after_image?: string;
-  created_at: string;
-  updated_at: string;
+  before_image: string;
+  after_image: string;
+}
+
+export interface User {
+  id: string;
+  display_name: string;
+  avatar_url?: string;
+  role: 'admin' | 'moderator' | 'user';
 }
